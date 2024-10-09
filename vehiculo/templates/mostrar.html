@@ -1,0 +1,92 @@
+{% extends 'layout.html' %} 
+{% load bootstrap5 %} 
+ 
+{% block content %}
+
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Libros</title> 
+</head> 
+<body> 
+    <h2>Listado de Vehiculos</h2>      
+
+
+
+
+
+
+
+    <table style="width:100%  ">
+        <tr>
+        <th>Marca<hr></th>
+        <th>Modelo<hr></th>
+        <th>Serial Carroceria<hr></th>
+        <th>Serial Motor<hr></th>
+        <th>Categoria<hr></th>
+        <th>Precio<hr></th>
+        <th>Condición de Precio<hr></th>
+      
+        </tr>
+          <hr>
+        {% for vehiculi in vehiculos %}
+        <tr>
+        <td>{{ vehiculi.marca }} </td>
+        <td>{{ vehiculi.modelo }}</td>
+        <td>{{ vehiculi.serialCarroceria }}</td>
+        <td>{{ vehiculi.serialMotor }}</td>
+        <td>{{ vehiculi.categoria }}</td>
+        <td>{{ vehiculi.precio }}</td>
+        {% if vehiculi.precio > 0 and vehiculi.precio < 10000 %}
+        <td>Bajo</td> 
+        {% elif vehiculi.precio > 10000 and vehiculi.precio < 30000 %}
+        <td>Medio</td> 
+        {% elif vehiculi.precio > 30000  %}
+        <td>Alto</td> 
+        {% endif %}    
+       
+        
+
+{% comment %} 
+        {% for vehiculi in vehiculos %} {% endcomment %}
+
+  
+
+    {% comment %} {% endfor %} {% endcomment %}
+
+
+
+        </tr>{% endfor %}
+        </table>
+
+        
+
+
+
+
+{% comment %} {% for i in items %}
+
+    {% if i.valoracion > 1500 %}
+        Titulo: {{i.titulo}}, 
+        Autor: {{i.autor}},
+        Valoración: {{i.valoracion}}     <br>
+    {% endif %}    
+
+{% endfor %}
+
+
+<br>    <p><b>Listado de todos los libros:</b></p>      
+
+{% for i in items %}
+    Titulo: {{i.titulo}},
+    Autor: {{i.autor}} <br>
+{% endfor %}
+             {% endcomment %}
+        
+</body> 
+</html>
+
+{% endblock content%}
