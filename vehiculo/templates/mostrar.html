@@ -1,6 +1,3 @@
-{% extends 'layout.html' %} 
-{% load bootstrap5 %} 
- 
 {% block content %}
 
 <!DOCTYPE html> 
@@ -13,13 +10,6 @@
 </head> 
 <body> 
     <h2>Listado de Vehiculos</h2>      
-
-
-
-
-
-
-
     <table style="width:100%  ">
         <tr>
         <th>Marca<hr></th>
@@ -47,44 +37,8 @@
         {% elif vehiculi.precio > 30000  %}
         <td>Alto</td> 
         {% endif %}    
-       
-        
-
-{% comment %} 
-        {% for vehiculi in vehiculos %} {% endcomment %}
-
-  
-
-    {% comment %} {% endfor %} {% endcomment %}
-
-
-
         </tr>{% endfor %}
         </table>
-
-        
-
-
-
-
-{% comment %} {% for i in items %}
-
-    {% if i.valoracion > 1500 %}
-        Titulo: {{i.titulo}}, 
-        Autor: {{i.autor}},
-        Valoración: {{i.valoracion}}     <br>
-    {% endif %}    
-
-{% endfor %}
-
-
-<br>    <p><b>Listado de todos los libros:</b></p>      
-
-{% for i in items %}
-    Titulo: {{i.titulo}},
-    Autor: {{i.autor}} <br>
-{% endfor %}
-             {% endcomment %}
         
 </body> 
 </html>

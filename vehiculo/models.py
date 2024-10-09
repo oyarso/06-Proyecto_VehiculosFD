@@ -11,9 +11,9 @@ class BoardsModel(models.Model):
     CARGA = 'Carga'
 
     ChoicesMarca=(
+        (FORD,'Ford'),
         (FIAT,'Fiat'),
         (CHEVROLET,'Chevrolet'),
-        (FORD,'Ford'),
         (TOYOTA,'Toyota'),
     )
     ChoicesCategoria=(
@@ -21,7 +21,7 @@ class BoardsModel(models.Model):
         (TRANSPORTE,'Transporte'),
         (CARGA,'Carga'),
     )
-    marca  = models.CharField(max_length = 20, choices=ChoicesMarca, default="FIAT")
+    marca  = models.CharField(max_length = 20, choices=ChoicesMarca, default="FORD")
     modelo = models.CharField(max_length = 100)      
     serialCarroceria = models.CharField(max_length = 50)   
     serialMotor = models.CharField(max_length = 50)  
