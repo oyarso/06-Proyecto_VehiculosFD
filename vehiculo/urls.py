@@ -1,5 +1,4 @@
 from django.urls import path
-from django.urls import path
 from .views import IndexPageView, menuView, boardsform_view, mostrar
 
 urlpatterns = [ 

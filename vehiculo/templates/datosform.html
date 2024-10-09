@@ -1,3 +1,6 @@
+{% extends 'layout.html' %} 
+ 
+{% load bootstrap5 %} 
 {% block content %}
 <html> 
   <head> 
@@ -9,7 +12,6 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/
   </head> 
  
   <body> 
-   
     <div class="i-am-centered"> 
       <form method="POST"> 
         {% csrf_token %} 
@@ -42,11 +44,7 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/
   
     <button type="submit" class="btn btn-primary">Enviar</button> 
     </form> 
-    </div>
-    <a class="nav-link active" aria-current="page" href="/">Inicio</a> 
-
-    <a class="nav-link active" aria-current="page" href="/add">Agregar</a>  
+    </div> 
     </body> 
-
 </html> 
 {% endblock content %}

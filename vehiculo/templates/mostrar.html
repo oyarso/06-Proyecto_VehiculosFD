@@ -1,3 +1,5 @@
+{% extends 'layout.html' %} 
+{% load bootstrap5 %} 
 {% block content %}
 
 <!DOCTYPE html> 
@@ -9,19 +11,19 @@
     <title>Libros</title> 
 </head> 
 <body> 
-    <h2>Listado de Vehiculos</h2>      
-    <table style="width:100%  ">
+   
+    <h4>Listado de Vehículos</h4>
+    
+    <table style="width:100%">
         <tr>
-        <th>Marca<hr></th>
-        <th>Modelo<hr></th>
-        <th>Serial Carroceria<hr></th>
-        <th>Serial Motor<hr></th>
-        <th>Categoria<hr></th>
-        <th>Precio<hr></th>
-        <th>Condición de Precio<hr></th>
-      
-        </tr>
-          <hr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Serial Carroceria</th>
+        <th>Serial Motor</th>
+        <th>Categoria</th>
+        <th>Precio</th>
+        <th>Condición de Precio</th><hr>
+        </tr>     
         {% for vehiculi in vehiculos %}
         <tr>
         <td>{{ vehiculi.marca }} </td>
@@ -30,16 +32,22 @@
         <td>{{ vehiculi.serialMotor }}</td>
         <td>{{ vehiculi.categoria }}</td>
         <td>{{ vehiculi.precio }}</td>
-        {% if vehiculi.precio > 0 and vehiculi.precio < 10000 %}
-        <td>Bajo</td> 
-        {% elif vehiculi.precio > 10000 and vehiculi.precio < 30000 %}
-        <td>Medio</td> 
-        {% elif vehiculi.precio > 30000  %}
-        <td>Alto</td> 
-        {% endif %}    
-        </tr>{% endfor %}
-        </table>
-        
+        <td>
+
+    {% if vehiculi.precio > 0 and vehiculi.precio < 10000 %}
+        Bajo
+    {% elif vehiculi.precio > 10000 and vehiculi.precio < 30000 %}
+        Medio
+    {% elif vehiculi.precio > 30000 %}
+        Alto
+    {% endif %}    
+        </td>
+       
+
+
+        </tr>
+        {% endfor %}
+    </table>
 </body> 
 </html>
 

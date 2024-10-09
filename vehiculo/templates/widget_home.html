@@ -1,7 +1,0 @@
-{% block content %}
-<form method="POST" onSubmit="return confirm('Enviado con exito') "> 
-    {% csrf_token %} {{ form.as_p }} 
-    <input type="submit" value="Enviar"/> 
-</form> 
-
-{% endblock content%}

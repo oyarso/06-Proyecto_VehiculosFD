@@ -1,5 +1,5 @@
 from django.db import models 
-
+from django.core.validators import MaxValueValidator
 class BoardsModel(models.Model): 
     FIAT = 'Fiat'
     CHEVROLET = 'Chevrolet'
@@ -11,9 +11,9 @@ class BoardsModel(models.Model):
     CARGA = 'Carga'
 
     ChoicesMarca=(
-        (FORD,'Ford'),
         (FIAT,'Fiat'),
         (CHEVROLET,'Chevrolet'),
+        (FORD,'Ford'),
         (TOYOTA,'Toyota'),
     )
     ChoicesCategoria=(
@@ -21,10 +21,10 @@ class BoardsModel(models.Model):
         (TRANSPORTE,'Transporte'),
         (CARGA,'Carga'),
     )
-    marca  = models.CharField(max_length = 20, choices=ChoicesMarca, default="FORD")
+    marca  = models.CharField(max_length = 20, choices=ChoicesMarca, default="FIAT")
     modelo = models.CharField(max_length = 100)      
-    serialCarroceria = models.CharField(max_length = 50)   
-    serialMotor = models.CharField(max_length = 50)  
+    serialCarroceria = models.IntegerField(validators = [MaxValueValidator(50)]) 
+    serialMotor = models.IntegerField(validators = [MaxValueValidator(50)])  
     categoria = models.CharField(max_length = 20, choices=ChoicesCategoria, default="PARTICULAR")
     precio = models.FloatField() 
     creado = models.DateTimeField(auto_now_add=True) 
@@ -40,4 +40,3 @@ class BoardsModel(models.Model):
 
 def __str__(self): 
     return self.autor 
-
