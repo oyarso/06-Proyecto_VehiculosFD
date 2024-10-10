@@ -8,7 +8,7 @@ from django.contrib.auth import login, authenticate , logout
 from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth.decorators import permission_required
 from .models import BoardsModel
-
+from .forms import WidgetForm, BoardsForm, RegistroUsuarioForm 
 class IndexPageView(TemplateView): 
     template_name = "index.html"
 
@@ -67,3 +67,18 @@ def logout_view(request):
     logout(request)
     messages.info(request, "Se ha cerrado la sesión satisfactoriamente.")
     return HttpResponseRedirect('/menu')
+
+def registro_view(request):
+    if request.method == "POST":
+        form = RegistroUsuarioForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registrado Satisfactoriamente.")
+            return HttpResponseRedirect('/menu')
+        else:
+            messages.error(request, "Registro invalido. Algunos datos ingresados no son correctos.")
+    else:
+        form = RegistroUsuarioForm()
+        
+    return render(request=request, template_name="registration/registro.html", context={"register_form": form})
