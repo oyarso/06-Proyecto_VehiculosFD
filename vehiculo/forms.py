@@ -1,6 +1,7 @@
 from django import forms 
 from .models import BoardsModel 
-
+from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth.models import User
 
 class WidgetForm(forms.Form): 
     marca = forms.CharField() 
@@ -12,7 +13,19 @@ class WidgetForm(forms.Form):
     precio = forms.FloatField() 
 
 
-
+class RegistroUsuarioForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+    
+    class Meta:
+        model = User
+        fields = ("username", "email", "password1", "password2")
+    
+    def save(self, commit=True):
+        user = super(RegistroUsuarioForm, self).save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+        return user
 
 
 class BoardsForm(forms.ModelForm): 
