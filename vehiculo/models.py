@@ -1,19 +1,21 @@
 from django.db import models 
 from django.core.validators import MaxValueValidator
+from django.contrib.auth.models import Permission, User
+
 class BoardsModel(models.Model): 
+    FORD = 'Ford' 
     FIAT = 'Fiat'
     CHEVROLET = 'Chevrolet'
-    FORD = 'Ford' 
     TOYOTA = 'Toyota'
 
     PARTICULAR = 'Particular'
     TRANSPORTE = 'Transporte'
     CARGA = 'Carga'
 
-    ChoicesMarca=(
+    ChoicesMarca=(        
+        (FORD,'Ford'),
         (FIAT,'Fiat'),
         (CHEVROLET,'Chevrolet'),
-        (FORD,'Ford'),
         (TOYOTA,'Toyota'),
     )
     ChoicesCategoria=(
@@ -21,7 +23,7 @@ class BoardsModel(models.Model):
         (TRANSPORTE,'Transporte'),
         (CARGA,'Carga'),
     )
-    marca  = models.CharField(max_length = 20, choices=ChoicesMarca, default="FIAT")
+    marca  = models.CharField(max_length = 20, choices=ChoicesMarca, default="FORD")
     modelo = models.CharField(max_length = 100)      
     serialCarroceria = models.IntegerField(validators = [MaxValueValidator(50)]) 
     serialMotor = models.IntegerField(validators = [MaxValueValidator(50)])  
@@ -35,8 +37,10 @@ class BoardsModel(models.Model):
         verbose_name_plural = "vehiculos" 
         ordering = ["-creado"]         
         permissions = ( 
-            ("es_miembro_1", "Es miembro con prioridad 1"), 
+            ("visualizar_catalogo", "Can view vehiculo"), 
+            ("add_vehiculomodel", "Can view vehiculo"), 
         )             
 
 def __str__(self): 
     return self.autor 
+
