@@ -1,6 +1,4 @@
 from django.db import models 
-from django.core.validators import MaxValueValidator
-from django.contrib.auth.models import Permission, User
 
 class BoardsModel(models.Model): 
     FORD = 'Ford' 
@@ -25,8 +23,8 @@ class BoardsModel(models.Model):
     )
     marca  = models.CharField(max_length = 20, choices=ChoicesMarca, default="FORD")
     modelo = models.CharField(max_length = 100)      
-    serialCarroceria = models.IntegerField(validators = [MaxValueValidator(50)]) 
-    serialMotor = models.IntegerField(validators = [MaxValueValidator(50)])  
+    serialCarroceria = models.CharField(max_length = 50) 
+    serialMotor = models.CharField(max_length = 50) 
     categoria = models.CharField(max_length = 20, choices=ChoicesCategoria, default="PARTICULAR")
     precio = models.FloatField() 
     creado = models.DateTimeField(auto_now_add=True) 
