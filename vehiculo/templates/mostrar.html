@@ -2,53 +2,55 @@
 {% load bootstrap5 %} 
 {% block content %}
 
-<!DOCTYPE html> 
-<html lang="es"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Libros</title> 
-</head> 
-<body> 
-   
-    <h4>Listado de Vehículos</h4>
-    
-    <table style="width:100%">
-        <tr>
-        <th>Marca</th>
-        <th>Modelo</th>
-        <th>Serial Carroceria</th>
-        <th>Serial Motor</th>
-        <th>Categoria</th>
-        <th>Precio</th>
-        <th>Condición de Precio</th><hr>
-        </tr>     
-        {% for vehiculi in vehiculos %}
-        <tr>
-        <td>{{ vehiculi.marca }} </td>
-        <td>{{ vehiculi.modelo }}</td>
-        <td>{{ vehiculi.serialCarroceria }}</td>
-        <td>{{ vehiculi.serialMotor }}</td>
-        <td>{{ vehiculi.categoria }}</td>
-        <td>{{ vehiculi.precio }}</td>
-        <td>
-
-    {% if vehiculi.precio > 0 and vehiculi.precio < 10000 %}
-        Bajo
-    {% elif vehiculi.precio > 10000 and vehiculi.precio < 30000 %}
-        Medio
-    {% elif vehiculi.precio > 30000 %}
-        Alto
-    {% endif %}    
-        </td>
-       
 
 
-        </tr>
-        {% endfor %}
-    </table>
-</body> 
-</html>
+        <!DOCTYPE html> 
+        <html lang="es"> 
+        <head> 
+            <meta charset="UTF-8"> 
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+            <title>Libros</title> 
+        </head> 
+        <body> 
+        
+            <h4>Listado de Vehículos</h4>
+            
+            <table style="width:100%">
+                <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Serial Carroceria</th>
+                <th>Serial Motor</th>
+                <th>Categoria</th>
+                <th>Precio</th>
+                <th>Condición de Precio</th><hr>
+                </tr>     
+                {% for vehiculi in vehiculos %}
+                <tr>
+                <td>{{ vehiculi.marca }} </td>
+                <td>{{ vehiculi.modelo }}</td>
+                <td>{{ vehiculi.serialCarroceria }}</td>
+                <td>{{ vehiculi.serialMotor }}</td>
+                <td>{{ vehiculi.categoria }}</td>
+                <td>{{ vehiculi.precio }}</td>
+                <td>
 
+            {% if vehiculi.precio > 0 and vehiculi.precio < 10000 %}
+                Bajo
+            {% elif vehiculi.precio > 10000 and vehiculi.precio < 30000 %}
+                Medio
+            {% elif vehiculi.precio > 30000 %}
+                Alto
+            {% endif %}    
+                </td>
+            
+
+
+                </tr>
+                {% endfor %}
+            </table>
+        </body> 
+        </html>
+  
 {% endblock content%}

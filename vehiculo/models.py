@@ -30,15 +30,12 @@ class BoardsModel(models.Model):
     creado = models.DateTimeField(auto_now_add=True) 
     modificado = models.DateTimeField(auto_now = True)  
 
-    class Meta: 
-        verbose_name = "vehiculo" 
-        verbose_name_plural = "vehiculos" 
-        ordering = ["-creado"]         
-        permissions = ( 
+    class Meta:         
+        permissions = (
             ("visualizar_catalogo", "Can view vehiculo"), 
-            ("add_vehiculomodel", "Can view vehiculo"), 
-        )             
-
+            ("add_vehiculomodel", "Can add vehiculo"), 
+        ) 
 def __str__(self): 
     return self.autor 
+
 

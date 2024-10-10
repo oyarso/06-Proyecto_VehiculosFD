@@ -8,6 +8,7 @@ from django.contrib.auth import login, authenticate , logout
 from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth.decorators import permission_required
 from .models import BoardsModel
+from django.contrib.admin.views.decorators import staff_member_required
 from .forms import WidgetForm, BoardsForm, RegistroUsuarioForm 
 class IndexPageView(TemplateView): 
     template_name = "index.html"
@@ -16,17 +17,19 @@ def menuView(request):
     template_name = 'menu.html' 
     return render(request, template_name) 
 
+
+@staff_member_required
 def mostrar(request):
     
     vehiculos = BoardsModel.objects.all()
     return render(request, 'mostrar.html', {'vehiculos': vehiculos}) 
 
-
+@staff_member_required
 def datosform_view(request): 
     context ={} 
     return render(request, "datosform.html", context) 
 
-
+@staff_member_required
 def boardsform_view(request): 
     context ={}  
     form = BoardsForm(request.POST or None, request.FILES or None) 
@@ -36,6 +39,7 @@ def boardsform_view(request):
     context['form']= form 
     return render(request, "datosform.html", context) 
 
+@staff_member_required
 def widget_view(request): 
     context = {} 
     form = WidgetForm(request.POST or None) 

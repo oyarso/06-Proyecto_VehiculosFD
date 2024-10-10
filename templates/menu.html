@@ -15,16 +15,16 @@
             <li class="nav-item"> 
             <a class="nav-link active" aria-current="page" href="/">Inicio</a> 
         </li>
+        {% if user.is_authenticated %}
+            <li class="nav-item"> 
+                <a class="nav-link active" aria-current="page" href="/add">Agregar</a> </li>
 
-        <li class="nav-item"> 
-            <a class="nav-link active" aria-current="page" href="/add">Agregar</a> 
-        </li>
-
-        <li class="nav-item"> 
-            <a class="nav-link active" aria-current="page" href="/listar">Listar</a> 
-</li>
+            <li class="nav-item"> 
+                <a class="nav-link active" aria-current="page" href="/listar">Listar</a> </li>
+        {% endif %}
+   
         </ul> 
-
+        <form class="d-flex">
     <div class="collapse navbar-collapse" id="navbarText"> 
         <ul class="navbar-nav mr-auto"> 
         {% if user.is_authenticated %} 
@@ -42,7 +42,7 @@
             <a class="nav-link" href="/registro">Registro</a> 
             </li>  
         {% endif %} 
-        </ul> 
+        </ul> </form>
     </div> 
     </nav> 
     {% endblock %} 

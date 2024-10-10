@@ -22,22 +22,10 @@ http://127.0.0.1:8000/listar/
 
 ## Usuarios registrados:
 
-## RUTA:
+## RUTA login:
 
 http://127.0.0.1:8000/login/
 
-## con permiso para visualizar_catalogo:
-Username:
-usuarioprueba
+## RUTA registro:
 
-Password:
-usuarioprueba
-
-## con permiso para visualizar_catalogo y add_vehiculomodel:
-Username:
-usuarioprueba2
-
-Password:
-usuarioprueba2
-
-
+http://127.0.0.1:8000/registro/
